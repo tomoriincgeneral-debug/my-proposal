@@ -26,6 +26,20 @@ body {
   color: #4e342e;
 }
 
+/* ★ ウォーターマーク（透かし）のスタイル ★ */
+.watermark {
+  position: fixed; /* スクロールしても追従 */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none; /* スマホでのスクロールやタップの邪魔にならないようにする */
+  z-index: 9999; /* 常に一番手前に表示 */
+  /* SVGを利用して斜めの文字を繰り返し表示 */
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' width='200' height='200'><text x='50%' y='50%' fill='rgba(0, 0, 0, 0.06)' font-family='sans-serif' font-size='18' font-weight='bold' text-anchor='middle' dominant-baseline='middle' transform='rotate(-30 100 100)'>CONFIDENTIAL</text></svg>");
+  background-repeat: repeat;
+}
+
 /* スマホWebサイト風のコンテナ（最大幅を設定し中央配置） */
 .web-container {
   background-color: #fffaf0; /* コンテンツエリアの背景色 */
@@ -112,19 +126,20 @@ h2, h3 {
 .image-wrapper {
   border-radius: 16px;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  /* 4:3から3:4（縦長）に変更 */
+  aspect-ratio: 3 / 4; 
   overflow: hidden;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   border: 6px solid #ffffff; /* 写真風のフチ */
   transform: rotate(2deg); /* 少し傾ける */
-  margin-bottom: 30px;
+  margin: 10px 0 40px 0;
 }
 
 .image-wrapper img {
   height: 100%;
   width: 100%;
   object-fit: cover;
-  object-position: center 20%;
+  object-position: center center;
 }
 
 .text-column {
@@ -146,9 +161,62 @@ h2, h3 {
   font-weight: 700;
   font-size: 16px;
 }
+
+/* 4. RESULTS STYLES (実績例用スタイル) */
+.result-image-wrapper {
+  border-radius: 12px;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  border: 4px solid #ffffff;
+  margin-bottom: 20px;
+}
+
+.result-image-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.results-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.result-box {
+  background-color: #fff0f5;
+  border-radius: 8px;
+  padding: 12px 15px;
+  border-left: 5px solid #ffb6c1;
+}
+
+.result-header {
+  font-weight: 700;
+  color: #d81b60;
+  font-size: 15px;
+  margin-bottom: 6px;
+  border-bottom: 1px dashed #ffb6c1;
+  padding-bottom: 4px;
+}
+
+.result-body {
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+.result-highlight {
+  color: #d81b60;
+  font-weight: 700;
+  display: block;
+  margin-top: 4px;
+}
     </style>
 </head>
 <body>
+
+<!-- ★ ウォーターマークレイヤー ★ -->
+<div class="watermark"></div>
 
 <div class="web-container">
     <div class="content-area">
@@ -159,10 +227,9 @@ h2, h3 {
             <p class="intro-text">「何か特別なことをしなきゃいけないの？」<br> いいえ！過激なことや、無理な演技は一切不要です。</p>
         </div>
 
-        <!-- イメージ画像 -->
+        <!-- イメージ画像（3:4比率） -->
         <div class="image-wrapper">
-            <!-- アップロードいただいた画像ファイル名を指定しています。 -->
-            <img src="Gemini_Generated_Image_uapfgeuapfgeuapf.jpg" alt="日常の撮影シーンのイメージ" onerror="this.src='https://placehold.co/600x450/ffe4e1/d81b60?text=No+Image+Found'">
+            <img src="動画例0221.jpg" alt="" onerror="this.src='https://placehold.co/600x800/ffe4e1/d81b60?text=No+Image+Found'">
         </div>
 
         <!-- テキストエリア -->
@@ -172,20 +239,6 @@ h2, h3 {
                 <p>あなたが普段している「家事」や「リラックスタイム」を、スマホやカメラで撮るだけ！<br>
                 例えるなら、<span class="highlight-word">「少しだけカメラを意識した日常」</span>を過ごすだけです。<br>
                 あとは私たちが魔法をかけて、あなた専用のファンクラブを作ります！</p>
-            </div>
-
-            <div class="point-block">
-                <h3>🛡️ 絶対に守られる「３つの安心」</h3>
-                <p>
-                    <b>① 誰にもバレない（最新AIマジック🪄）</b><br>
-                    あなたのお顔や声は、最新のAI技術で変身させます！家族や職場、友達にバレる心配はありません。<br><br>
-                    
-                    <b>② 個別のやり取りはナシ🙅‍♀️</b><br>
-                    ファンと直接会ったり、個人的なメッセージのやり取りをすることは「禁止ルール」にしています。すべてスマホの中で、安全な距離感を保って完結します。<br><br>
-                    
-                    <b>③ 面倒な作業は「ぜんぶ丸投げ」🏢</b><br>
-                    動画のカット編集、テロップ入れ、SNS（インスタ等）への投稿、ファン対応は、すべてプロの運営チームが代わりにやります！
-                </p>
             </div>
 
             <div class="point-block">
@@ -203,11 +256,206 @@ h2, h3 {
             </div>
 
             <div class="point-block">
+                <h3>🛡️ 絶対に守られる「３つの安心」</h3>
+                <p>
+                    <b>① 身バレ対策は“あなた基準”で決定 🔒</b><br>
+                    活動スタイルは事前カウンセリングで一緒に決めます。<br>
+                    ・マスク着用<br>
+                    ・口元のみ<br>
+                    ・目元のみ<br>
+                    ・完全AI変換🪄<br>
+                    ・顔出しOKで最大収益狙い💰<br>
+                    あなたの許容範囲に合わせて設計します。無理に顔出しを強要することはありません。<br><br>
+                    
+                    <b>② 個別のやり取りはナシ 🙅‍♀️</b><br>
+                    ファンと直接会うことはありません。個人的なDMのやり取りも禁止ルールとしています。やり取りはすべて運営チームが管理し、スマホの中で完結する仕組みを徹底。とにかく安心できる状態を守ります。<br><br>
+                    
+                    <b>③ 面倒な作業は「ぜんぶ丸投げ」 🏢</b><br>
+                    動画編集・テロップ制作、SNS投稿、ファン対応やコメント管理は、すべてプロの運営チームが担当します。<br><br>
+                    さらに――<br>
+                    ✔ 投稿時間の最適化<br>
+                    ✔ アルゴリズム分析<br>
+                    ✔ 導線設計<br>
+                    ✔ 売れるコンテンツ構成<br>
+                    ✔ 月次改善ミーティング<br><br>
+                    SNSマーケのプロが戦略から設計します。あなたは“生活をするだけ”。仕組みでファンを育てます✨
+                </p>
+            </div>
+
+            <!-- カウンセリング〜継続設計セクション -->
+            <div class="point-block">
+                <h3>🤝 カウンセリング〜継続設計</h3>
+                
+                <div style="font-weight: 700; color: #d81b60; font-size: 16px; margin-top: 15px; margin-bottom: 8px; border-bottom: 1px dashed #ffb6c1; padding-bottom: 5px;">STEP1｜無料カウンセリングで「あなた専用の収益設計」を作ります</div>
+                <p>まずはカウンセリング。<br><br>
+                ✔ 活動できる時間<br>
+                ✔ 顔出しの可否<br>
+                ✔ 生活リズム<br>
+                ✔ 得意な雰囲気<br>
+                ✔ 無理のないペース<br><br>
+                これらをヒアリングし、あなたに合った活動スタイルを一緒に決めます。<br>
+                無理な顔出しも、過度な露出も、強要しません。<br>
+                <span class="highlight-word">「続けられるかどうか」</span>を最優先に設計します。</p>
+
+                <div style="font-weight: 700; color: #d81b60; font-size: 16px; margin-top: 25px; margin-bottom: 8px; border-bottom: 1px dashed #ffb6c1; padding-bottom: 5px;">STEP2｜あなたに合う“コンセプト”を一緒に作ります</div>
+                <p>稼げる人には、必ず“軸”があります。<br><br>
+                例えば…<br>
+                ・癒し系の丁寧な日常<br>
+                ・自然体の素朴なリアル<br>
+                ・落ち着いた大人の余裕<br>
+                ・元ナイトワークの色気<br><br>
+                あなたの魅力を分析し、ファンが定着しやすいコンセプトに変換します。<br>
+                感覚ではなく、戦略で設計します。</p>
+
+                <div style="font-weight: 700; color: #d81b60; font-size: 16px; margin-top: 25px; margin-bottom: 8px; border-bottom: 1px dashed #ffb6c1; padding-bottom: 5px;">STEP3｜面倒にならない“継続設計”</div>
+                <p>「続かない」が一番の失敗。<br>
+                だからこそ、仕組みで支えます。<br><br>
+                ✔ 投稿テンプレート用意<br>
+                ✔ 撮影時間の固定化<br>
+                ✔ 無理のない頻度設定<br>
+                ✔ SNS投稿時間の最適化<br>
+                ✔ 導線設計<br>
+                ✔ 数字分析・改善<br><br>
+                SNSマーケのプロが裏側を管理。<br>
+                あなたは、<span class="highlight-word">日常を過ごして素材を撮るだけ</span>。</p>
+
+                <div style="font-weight: 700; color: #d81b60; font-size: 16px; margin-top: 25px; margin-bottom: 8px; border-bottom: 1px dashed #ffb6c1; padding-bottom: 5px;">継続すれば“積み上がる収入”へ</div>
+                <p>ファンは一度つけば、毎月自動的に積み上がっていきます。<br>
+                軌道に乗れば、<br>
+                月20万円 / 月30万円 / 月50万円以上<br><br>
+                “労働収入”ではなく<span class="highlight-word">ストック型収入</span>を目指します。</p>
+                
+                <div style="font-weight: 700; color: #d81b60; font-size: 16px; margin-top: 25px; margin-bottom: 8px; border-bottom: 1px dashed #ffb6c1; padding-bottom: 5px;">私たちが大切にしていること</div>
+                <p>・身バレ対策はあなた基準<br>
+                ・直接接客なし<br>
+                ・生活優先<br>
+                ・無理をさせない<br>
+                ・長く続く設計<br><br>
+                安心して取り組める環境を整えます。</p>
+            </div>
+
+            <div class="point-block">
                 <h3>💰 収入のイメージ</h3>
                 <p>
-                    運営チームがあなたのファンクラブを育てます。そこから出た<span class="highlight-word">「売上の数10%」</span>が毎月口座に入ります💸<br><br>
-                    ファンが定着して軌道に乗れば、「ただ普段の生活をしているだけなのに、毎月数十万円のお小遣いが入ってくる」状態を作ることを目指しています！
+                    運営チームがあなたのファンクラブを育てます。そこで生まれた収益は<span class="highlight-word">毎月あなたに継続的に還元</span>されます💸<br><br>
+                    あなたの戦略・ライフスタイルに合わせて「ただ普段の生活をしているだけなのに、毎月数十万円のお小遣いが入ってくる」状態を作ることが可能です！
                 </p>
+            </div>
+
+            <!-- 実績例セクション -->
+            <div class="point-block">
+                <h3>📈 実績例</h3>
+                <p style="margin-bottom: 15px;">様々なライフスタイルに合わせて、無理なく収益化できている先輩たちがたくさんいます✨</p>
+
+                <!-- 実績イラスト画像 -->
+                <div class="result-image-wrapper">
+                    <img src="実績例0221.jpg" alt="" onerror="this.src='https://placehold.co/600x800/ffe4e1/d81b60?text=No+Image+Found'">
+                </div>
+
+                <!-- 実績詳細リスト -->
+                <div class="results-container">
+                    <div class="result-box">
+                        <div class="result-header">① 24歳・元ナイトワーク</div>
+                        <div class="result-body">
+                            週3投稿<br>
+                            2ヶ月目：月28万円 / 4ヶ月目：月52万円<br>
+                            <b>現在：月71万円</b>
+                            <span class="result-highlight">▶ 色気×戦略設計で爆発</span>
+                        </div>
+                    </div>
+                    
+                    <div class="result-box">
+                        <div class="result-header">② 29歳・OL副業</div>
+                        <div class="result-body">
+                            週2投稿<br>
+                            3ヶ月目：月16万円 / 6ヶ月目：月39万円<br>
+                            <b>現在：月48万円</b>
+                            <span class="result-highlight">▶ “素のギャップ”でファン定着</span>
+                        </div>
+                    </div>
+
+                    <div class="result-box">
+                        <div class="result-header">③ 32歳・子育て中</div>
+                        <div class="result-body">
+                            週2投稿<br>
+                            3ヶ月目：月14万円 / 6ヶ月目：月33万円<br>
+                            <b>現在：月44万円</b>
+                            <span class="result-highlight">▶ 大人の余裕コンセプト</span>
+                        </div>
+                    </div>
+
+                    <div class="result-box">
+                        <div class="result-header">④ 27歳・ラウンジ経験者</div>
+                        <div class="result-body">
+                            週3投稿<br>
+                            2ヶ月目：月31万円 / 5ヶ月目：月67万円
+                            <span class="result-highlight">▶ 営業力をオンライン化</span>
+                        </div>
+                    </div>
+
+                    <div class="result-box">
+                        <div class="result-header">⑤ 23歳・美容好き</div>
+                        <div class="result-body">
+                            週3投稿<br>
+                            3ヶ月目：月22万円 / 6ヶ月目：月58万円
+                            <span class="result-highlight">▶ “美意識”軸でブランド化</span>
+                        </div>
+                    </div>
+
+                    <div class="result-box">
+                        <div class="result-header">⑥ 30歳・会社員</div>
+                        <div class="result-body">
+                            週2投稿<br>
+                            4ヶ月目：月18万円 / 8ヶ月目：月41万円
+                            <span class="result-highlight">▶ 夜時間活用モデル</span>
+                        </div>
+                    </div>
+
+                    <div class="result-box">
+                        <div class="result-header">⑦ 26歳・現役夜職</div>
+                        <div class="result-body">
+                            週3投稿<br>
+                            3ヶ月目：月35万円 / 6ヶ月目：月78万円
+                            <span class="result-highlight">▶ 既存ファン導線活用</span>
+                        </div>
+                    </div>
+
+                    <div class="result-box">
+                        <div class="result-header">⑧ 34歳・落ち着き系</div>
+                        <div class="result-body">
+                            週2投稿<br>
+                            5ヶ月目：月20万円 / 9ヶ月目：月46万円
+                            <span class="result-highlight">▶ “安心感”軸で固定客</span>
+                        </div>
+                    </div>
+
+                    <div class="result-box">
+                        <div class="result-header">⑨ 25歳・フリーター</div>
+                        <div class="result-body">
+                            週3投稿<br>
+                            3ヶ月目：月24万円 / 6ヶ月目：月60万円
+                            <span class="result-highlight">▶ ショート導線強化</span>
+                        </div>
+                    </div>
+
+                    <div class="result-box">
+                        <div class="result-header">⑩ 28歳・元モデル</div>
+                        <div class="result-body">
+                            週3投稿<br>
+                            2ヶ月目：月40万円 / 5ヶ月目：月82万円
+                            <span class="result-highlight">▶ ルックス×戦略設計</span>
+                        </div>
+                    </div>
+
+                    <div class="result-box">
+                        <div class="result-header">⑪ 31歳・大人色気路線</div>
+                        <div class="result-body">
+                            週2投稿<br>
+                            4ヶ月目：月19万円 / 7ヶ月目：月47万円
+                            <span class="result-highlight">▶ “余裕”を売るコンセプト</span>
+                        </div>
+                    </div>
+                </div>
             </div>
             
             <p style="text-align: center; font-weight: 700; color: #d81b60; margin-top: 10px;">
@@ -217,6 +465,13 @@ h2, h3 {
 
     </div>
 </div>
+
+<!-- ★ ここから下にGoogleアナリティクスなどの閲覧ログ（トラッキングコード）を貼り付けてください ★ -->
+<!-- 
+<script>
+  // ここにコードを貼り付けます
+</script>
+-->
 
 </body>
 </html>
